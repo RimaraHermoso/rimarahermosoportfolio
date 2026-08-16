@@ -1,13 +1,3863 @@
-.profile-avatar {
-    width: 120px;
-    height: 120px;
-    overflow: hidden;
-    border-radius: 50%;
-}
+```html
+<!DOCTYPE html>
+<html lang="en">
 
-.profile-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Rimara Magalong Hermoso - Sales, Customer Support, Workforce Management and IT Support Professional">
+
+    <meta name="author" content="Rimara Magalong Hermoso">
+
+    <title>Rimara Magalong Hermoso | Professional Portfolio</title>
+
+    <style>
+
+        /* =========================================================
+           ROOT VARIABLES
+        ========================================================= */
+
+        :root {
+            --primary: #2563eb;
+            --primary-light: #60a5fa;
+            --primary-dark: #1d4ed8;
+
+            --accent: #38bdf8;
+
+            --dark: #0f172a;
+            --dark-2: #111827;
+            --dark-3: #1e293b;
+
+            --light: #f8fafc;
+            --white: #ffffff;
+
+            --text: #334155;
+            --text-light: #64748b;
+
+            --border: #e2e8f0;
+
+            --card: rgba(255,255,255,0.85);
+
+            --shadow:
+                0 10px 30px rgba(15,23,42,0.08);
+
+            --shadow-hover:
+                0 20px 45px rgba(15,23,42,0.14);
+
+            --radius: 18px;
+
+            --transition: 0.3s ease;
+        }
+
+
+        /* =========================================================
+           DARK MODE
+        ========================================================= */
+
+        body.dark {
+            --light: #020617;
+            --white: #0f172a;
+
+            --text: #e2e8f0;
+            --text-light: #94a3b8;
+
+            --border: #1e293b;
+
+            --card: rgba(15,23,42,0.85);
+
+            --shadow:
+                0 10px 30px rgba(0,0,0,0.25);
+
+            --shadow-hover:
+                0 20px 45px rgba(0,0,0,0.35);
+        }
+
+
+        /* =========================================================
+           RESET
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family:
+                Inter,
+                "Segoe UI",
+                Roboto,
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            line-height: 1.6;
+
+            color: var(--text);
+
+            background: var(--light);
+
+            transition:
+                background 0.3s ease,
+                color 0.3s ease;
+
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+
+        /* =========================================================
+           SCROLL PROGRESS
+        ========================================================= */
+
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--primary),
+                    var(--accent)
+                );
+
+            z-index: 9999;
+        }
+
+
+        /* =========================================================
+           NAVIGATION
+        ========================================================= */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+
+            padding: 16px 7%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            background:
+                rgba(15,23,42,0.88);
+
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+
+            color: white;
+
+            z-index: 1000;
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.08);
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--primary-light);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 26px;
+            list-style: none;
+            padding: 0;
+            align-items: center;
+        }
+
+        nav ul li a {
+            position: relative;
+            color: #e2e8f0;
+            font-size: 14px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        nav ul li a::after {
+            content: "";
+
+            position: absolute;
+
+            width: 0;
+            height: 2px;
+
+            bottom: -7px;
+            left: 50%;
+
+            background: var(--primary-light);
+
+            transform:
+                translateX(-50%);
+
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover {
+            color: white;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+
+        /* =========================================================
+           THEME BUTTON
+        ========================================================= */
+
+        .theme-toggle {
+            width: 40px;
+            height: 40px;
+
+            border:
+                1px solid rgba(255,255,255,0.15);
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,0.08);
+
+            color: white;
+
+            cursor: pointer;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 18px;
+
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            background: var(--primary);
+
+            transform:
+                rotate(15deg);
+        }
+
+
+        /* =========================================================
+           MOBILE MENU
+        ========================================================= */
+
+        .menu-toggle {
+            display: none;
+
+            background: transparent;
+
+            border: none;
+
+            color: white;
+
+            font-size: 26px;
+
+            cursor: pointer;
+        }
+
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .hero {
+            min-height: 100vh;
+
+            position: relative;
+
+            display: flex;
+            align-items: center;
+
+            padding:
+                130px 7%
+                80px;
+
+            color: white;
+
+            overflow: hidden;
+
+            background:
+
+                radial-gradient(
+                    circle at 85% 20%,
+                    rgba(37,99,235,0.35),
+                    transparent 30%
+                ),
+
+                radial-gradient(
+                    circle at 10% 80%,
+                    rgba(56,189,248,0.15),
+                    transparent 30%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #020617,
+                    #0f172a,
+                    #172554
+                );
+        }
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 500px;
+            height: 500px;
+
+            border-radius: 50%;
+
+            border:
+                1px solid rgba(96,165,250,0.15);
+
+            right: -150px;
+            top: 100px;
+
+            animation:
+                float 8s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: "";
+
+            position: absolute;
+
+            width: 300px;
+            height: 300px;
+
+            border-radius: 50%;
+
+            border:
+                1px solid rgba(56,189,248,0.1);
+
+            left: -120px;
+            bottom: -100px;
+        }
+
+        .hero-container {
+            width: 100%;
+            max-width: 1200px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                1.3fr
+                0.7fr;
+
+            gap: 70px;
+
+            align-items: center;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+        .hero-content {
+            animation:
+                fadeUp 1s ease forwards;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            padding:
+                8px 15px;
+
+            margin-bottom: 22px;
+
+            border-radius: 50px;
+
+            background:
+                rgba(96,165,250,0.1);
+
+            border:
+                1px solid rgba(96,165,250,0.2);
+
+            color: #bfdbfe;
+
+            font-size: 13px;
+
+            font-weight: 600;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+
+            background: #22c55e;
+
+            border-radius: 50%;
+
+            box-shadow:
+                0 0 10px #22c55e;
+        }
+
+        .hero h1 {
+            font-size:
+                clamp(42px, 6vw, 76px);
+
+            line-height: 1.05;
+
+            letter-spacing: -3px;
+
+            margin-bottom: 20px;
+
+            font-weight: 800;
+        }
+
+        .hero h1 span {
+            display: block;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #ffffff,
+                    #93c5fd,
+                    #38bdf8
+                );
+
+            -webkit-background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero h2 {
+            font-size:
+                clamp(18px, 2vw, 25px);
+
+            line-height: 1.5;
+
+            font-weight: 500;
+
+            color: #bfdbfe;
+
+            margin-bottom: 25px;
+        }
+
+        .hero p {
+            max-width: 720px;
+
+            color: #cbd5e1;
+
+            font-size: 17px;
+
+            margin-bottom: 32px;
+        }
+
+
+        /* =========================================================
+           HERO BUTTONS
+        ========================================================= */
+
+        .buttons {
+            display: flex;
+
+            gap: 14px;
+
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 8px;
+
+            padding:
+                13px 21px;
+
+            border-radius: 10px;
+
+            font-weight: 700;
+
+            font-size: 14px;
+
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+
+            color: white;
+
+            box-shadow:
+                0 10px 25px
+                rgba(37,99,235,0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 15px 30px
+                rgba(37,99,235,0.4);
+        }
+
+        .btn-outline {
+            border:
+                1px solid
+                rgba(255,255,255,0.25);
+
+            background:
+                rgba(255,255,255,0.05);
+
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background:
+                rgba(255,255,255,0.12);
+
+            transform:
+                translateY(-3px);
+        }
+
+
+        /* =========================================================
+           HERO PROFILE CARD
+        ========================================================= */
+
+        .profile-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-card {
+            width: 100%;
+
+            max-width: 360px;
+
+            padding: 35px;
+
+            text-align: center;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.12);
+
+            background:
+                rgba(255,255,255,0.06);
+
+            backdrop-filter: blur(15px);
+
+            border-radius: 25px;
+
+            box-shadow:
+                0 25px 70px
+                rgba(0,0,0,0.3);
+
+            animation:
+                fadeUp 1s 0.2s ease both,
+                float 7s 2s ease-in-out infinite;
+        }
+
+
+        /* =========================================================
+           FIXED CIRCULAR PROFILE IMAGE
+        ========================================================= */
+
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+
+            margin: 0 auto 22px;
+
+            border-radius: 50%;
+
+            overflow: hidden;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary),
+                    var(--accent)
+                );
+
+            box-shadow:
+                0 15px 40px
+                rgba(37,99,235,0.35);
+
+            flex-shrink: 0;
+
+            position: relative;
+        }
+
+
+        /* IMPORTANT:
+           This forces rimara.jpg to stay INSIDE
+           the circular avatar instead of covering
+           the entire profile card.
+        */
+
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+
+            max-width: none;
+
+            object-fit: cover;
+
+            object-position: center;
+
+            display: block;
+        }
+
+
+        .profile-card h3 {
+            font-size: 23px;
+
+            margin-bottom: 7px;
+        }
+
+        .profile-card p {
+            color: #94a3b8;
+
+            font-size: 14px;
+        }
+
+        .profile-stats {
+            margin-top: 25px;
+
+            padding-top: 22px;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,0.1);
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
+
+            gap: 10px;
+        }
+
+        .stat strong {
+            display: block;
+
+            color: white;
+
+            font-size: 20px;
+        }
+
+        .stat span {
+            font-size: 11px;
+
+            color: #94a3b8;
+        }
+
+
+        /* =========================================================
+           GENERAL SECTIONS
+        ========================================================= */
+
+        section {
+            padding:
+                100px 7%;
+        }
+
+        .section-container {
+            max-width: 1150px;
+
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+
+            margin-bottom: 60px;
+        }
+
+        .section-label {
+            color: var(--primary);
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 10px;
+        }
+
+        .section-title h2 {
+            font-size:
+                clamp(30px,4vw,42px);
+
+            color: var(--text);
+
+            line-height: 1.2;
+
+            margin-bottom: 12px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+
+            max-width: 650px;
+
+            margin: auto;
+        }
+
+
+        /* =========================================================
+           ABOUT
+        ========================================================= */
+
+        .about {
+            background: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+
+            grid-template-columns:
+                0.8fr
+                1.2fr;
+
+            gap: 60px;
+
+            align-items: center;
+        }
+
+        .about-intro {
+            padding: 35px;
+
+            border-radius: var(--radius);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary),
+                    #1e40af
+                );
+
+            color: white;
+
+            box-shadow:
+                0 20px 40px
+                rgba(37,99,235,0.2);
+        }
+
+        .about-intro h3 {
+            font-size: 27px;
+
+            margin-bottom: 15px;
+        }
+
+        .about-intro p {
+            color: #dbeafe;
+
+            font-size: 15px;
+        }
+
+        .about-content p {
+            color: var(--text-light);
+
+            font-size: 16px;
+
+            margin-bottom: 18px;
+        }
+
+        .about-highlights {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2,1fr);
+
+            gap: 15px;
+
+            margin-top: 25px;
+        }
+
+        .highlight {
+            padding: 18px;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius: 12px;
+
+            background: var(--light);
+        }
+
+        .highlight strong {
+            display: block;
+
+            color: var(--text);
+
+            margin-bottom: 4px;
+        }
+
+        .highlight span {
+            font-size: 13px;
+
+            color: var(--text-light);
+        }
+
+
+        /* =========================================================
+           SKILLS
+        ========================================================= */
+
+        .skills {
+            background: var(--light);
+        }
+
+        .skills-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
+
+            gap: 20px;
+        }
+
+        .skill-card {
+            padding: 26px;
+
+            background: var(--white);
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius: var(--radius);
+
+            box-shadow: var(--shadow);
+
+            transition: var(--transition);
+        }
+
+        .skill-card:hover {
+            transform:
+                translateY(-7px);
+
+            box-shadow:
+                var(--shadow-hover);
+
+            border-color:
+                rgba(37,99,235,0.3);
+        }
+
+        .skill-icon {
+            width: 48px;
+
+            height: 48px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            border-radius: 12px;
+
+            background:
+                rgba(37,99,235,0.1);
+
+            color: var(--primary);
+
+            font-size: 22px;
+
+            margin-bottom: 17px;
+        }
+
+        .skill-card h3 {
+            font-size: 17px;
+
+            color: var(--text);
+
+            margin-bottom: 8px;
+        }
+
+        .skill-card p {
+            color: var(--text-light);
+
+            font-size: 13px;
+        }
+
+
+        /* =========================================================
+           EXPERIENCE
+        ========================================================= */
+
+        .experience {
+            background: var(--white);
+        }
+
+        .timeline {
+            position: relative;
+
+            max-width: 1000px;
+
+            margin: auto;
+        }
+
+        .timeline::before {
+            content: "";
+
+            position: absolute;
+
+            left: 18px;
+
+            top: 0;
+
+            bottom: 0;
+
+            width: 2px;
+
+            background:
+                linear-gradient(
+                    var(--primary),
+                    var(--accent),
+                    transparent
+                );
+        }
+
+        .job {
+            position: relative;
+
+            margin-bottom: 28px;
+
+            padding:
+                30px
+                32px
+                30px
+                55px;
+
+            border:
+                1px solid
+                var(--border);
+
+            background: var(--light);
+
+            border-radius: var(--radius);
+
+            box-shadow: var(--shadow);
+
+            transition: var(--transition);
+        }
+
+        .job::before {
+            content: "";
+
+            position: absolute;
+
+            left: 9px;
+
+            top: 32px;
+
+            width: 20px;
+
+            height: 20px;
+
+            border-radius: 50%;
+
+            background: var(--primary);
+
+            border:
+                4px solid
+                var(--white);
+
+            box-shadow:
+                0 0 0 2px
+                var(--primary);
+        }
+
+        .job:hover {
+            transform:
+                translateX(5px);
+
+            box-shadow:
+                var(--shadow-hover);
+        }
+
+        .job-header {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            margin-bottom: 15px;
+        }
+
+        .job h3 {
+            color: var(--text);
+
+            font-size: 20px;
+
+            line-height: 1.3;
+        }
+
+        .job h4 {
+            color: var(--primary);
+
+            font-size: 14px;
+
+            margin-top: 6px;
+        }
+
+        .date {
+            min-width: 145px;
+
+            white-space: nowrap;
+
+            color: var(--text-light);
+
+            font-size: 12px;
+
+            padding:
+                9px 13px;
+
+            height: fit-content;
+
+            background:
+                rgba(37,99,235,0.08);
+
+            border-radius: 12px;
+
+            border:
+                1px solid
+                rgba(37,99,235,0.12);
+
+            text-align: center;
+
+            line-height: 1.4;
+        }
+
+        .date .duration {
+            display: block;
+
+            margin-top: 5px;
+
+            color: var(--primary);
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.5px;
+        }
+
+        .account {
+            color: var(--text-light);
+
+            font-size: 13px;
+
+            margin-bottom: 10px;
+        }
+
+        .job ul {
+            color: var(--text-light);
+
+            font-size: 14px;
+        }
+
+        .job li {
+            margin-bottom: 8px;
+        }
+
+        .achievement-title {
+            color: var(--text);
+
+            font-weight: 800;
+
+            margin-top: 20px;
+
+            margin-bottom: 8px;
+        }
+
+
+        /* =========================================================
+           EDUCATION
+        ========================================================= */
+
+        .education {
+            background: var(--light);
+        }
+
+        .education-grid {
+            max-width: 900px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2,1fr);
+
+            gap: 25px;
+        }
+
+        .education-card {
+            background: var(--white);
+
+            padding: 30px;
+
+            border-radius: var(--radius);
+
+            border:
+                1px solid
+                var(--border);
+
+            box-shadow: var(--shadow);
+
+            transition: var(--transition);
+        }
+
+        .education-card:hover {
+            transform:
+                translateY(-5px);
+
+            box-shadow:
+                var(--shadow-hover);
+        }
+
+        .education-icon {
+            width: 50px;
+
+            height: 50px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            border-radius: 12px;
+
+            background:
+                rgba(37,99,235,0.1);
+
+            color: var(--primary);
+
+            font-size: 22px;
+
+            margin-bottom: 18px;
+        }
+
+        .education-card h3 {
+            color: var(--text);
+
+            font-size: 19px;
+
+            margin-bottom: 7px;
+        }
+
+        .education-card h4 {
+            color: var(--primary);
+
+            font-size: 14px;
+
+            margin-bottom: 10px;
+        }
+
+        .education-card p {
+            color: var(--text-light);
+
+            font-size: 14px;
+
+            margin-bottom: 5px;
+        }
+
+
+        /* =========================================================
+           PROJECTS
+        ========================================================= */
+
+        .projects {
+            background: var(--white);
+        }
+
+        .project-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
+
+            gap: 22px;
+        }
+
+        .project {
+            padding: 30px;
+
+            border:
+                1px solid
+                var(--border);
+
+            background: var(--light);
+
+            border-radius: var(--radius);
+
+            transition: var(--transition);
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .project::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 4px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--primary),
+                    var(--accent)
+                );
+        }
+
+        .project:hover {
+            transform:
+                translateY(-7px);
+
+            box-shadow:
+                var(--shadow-hover);
+        }
+
+        .project-number {
+            color: var(--primary);
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            margin-bottom: 18px;
+        }
+
+        .project h3 {
+            color: var(--text);
+
+            font-size: 20px;
+
+            margin-bottom: 12px;
+        }
+
+        .project p {
+            color: var(--text-light);
+
+            font-size: 14px;
+        }
+
+        .project-link {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 6px;
+
+            margin-top: 20px;
+
+            color: var(--primary);
+
+            font-weight: 700;
+
+            font-size: 14px;
+        }
+
+        .project-link:hover {
+            color: var(--primary-dark);
+        }
+
+
+        /* =========================================================
+           CONTACT
+        ========================================================= */
+
+        .contact {
+            position: relative;
+
+            overflow: hidden;
+
+            color: white;
+
+            background:
+
+                radial-gradient(
+                    circle at 20% 20%,
+                    rgba(37,99,235,0.25),
+                    transparent 30%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #020617,
+                    #0f172a
+                );
+
+            text-align: center;
+        }
+
+        .contact .section-label {
+            color: #60a5fa;
+        }
+
+        .contact h2 {
+            color: white;
+
+            font-size:
+                clamp(32px,5vw,48px);
+
+            margin-bottom: 15px;
+        }
+
+        .contact-intro {
+            max-width: 650px;
+
+            margin:
+                0 auto 40px;
+
+            color: #94a3b8;
+        }
+
+        .contact-grid {
+            max-width: 850px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
+
+            gap: 18px;
+        }
+
+        .contact-card {
+            padding: 25px 15px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.1);
+
+            background:
+                rgba(255,255,255,0.05);
+
+            border-radius: 15px;
+
+            transition: var(--transition);
+        }
+
+        .contact-card:hover {
+            background:
+                rgba(255,255,255,0.09);
+
+            transform:
+                translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 25px;
+
+            margin-bottom: 10px;
+        }
+
+        .contact-card span {
+            display: block;
+
+            color: #94a3b8;
+
+            font-size: 12px;
+
+            margin-bottom: 5px;
+        }
+
+        .contact-card a {
+            color: white;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            word-break: break-word;
+        }
+
+
+        /* =========================================================
+           SOCIAL LINKS
+        ========================================================= */
+
+        .social-links {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            margin-top: 35px;
+        }
+
+        .social-link {
+            width: 45px;
+
+            height: 45px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            border-radius: 50%;
+
+            color: white;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.15);
+
+            background:
+                rgba(255,255,255,0.06);
+
+            font-size: 18px;
+
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+
+            transform:
+                translateY(-4px);
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+            padding:
+                25px 7%;
+
+            background: #020617;
+
+            color: #64748b;
+
+            text-align: center;
+
+            font-size: 13px;
+        }
+
+        footer span {
+            color: #94a3b8;
+        }
+
+
+        /* =========================================================
+           BACK TO TOP
+        ========================================================= */
+
+        .back-top {
+            position: fixed;
+
+            right: 25px;
+
+            bottom: 25px;
+
+            width: 45px;
+
+            height: 45px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: var(--primary);
+
+            color: white;
+
+            font-size: 18px;
+
+            cursor: pointer;
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transform:
+                translateY(15px);
+
+            transition: var(--transition);
+
+            z-index: 900;
+        }
+
+        .back-top.show {
+            opacity: 1;
+
+            visibility: visible;
+
+            transform:
+                translateY(0);
+        }
+
+        .back-top:hover {
+            background:
+                var(--primary-dark);
+
+            transform:
+                translateY(-3px);
+        }
+
+
+        /* =========================================================
+           ANIMATIONS
+        ========================================================= */
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform:
+                    translateY(0);
+            }
+
+            50% {
+                transform:
+                    translateY(-15px);
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+
+            transform:
+                translateY(30px);
+
+            transition:
+                opacity 0.7s ease,
+                transform 0.7s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+
+            transform:
+                translateY(0);
+        }
+
+
+        /* =========================================================
+           RESPONSIVE TABLET
+        ========================================================= */
+
+        @media (max-width: 1000px) {
+
+            .hero-container {
+                grid-template-columns: 1fr;
+
+                text-align: center;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            .profile-wrapper {
+                order: -1;
+            }
+
+            .profile-card {
+                max-width: 330px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns:
+                    repeat(2,1fr);
+            }
+
+            .project-grid {
+                grid-template-columns:
+                    repeat(2,1fr);
+            }
+        }
+
+
+        /* =========================================================
+           RESPONSIVE MOBILE
+        ========================================================= */
+
+        @media (max-width: 768px) {
+
+            nav {
+                padding:
+                    14px 5%;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            nav ul {
+                position: absolute;
+
+                top: 69px;
+
+                left: 0;
+
+                width: 100%;
+
+                display: none;
+
+                flex-direction: column;
+
+                gap: 0;
+
+                background:
+                    rgba(15,23,42,0.98);
+
+                padding:
+                    10px 0 20px;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                width: 100%;
+
+                text-align: center;
+            }
+
+            nav ul li a {
+                display: block;
+
+                padding: 12px;
+            }
+
+            nav ul li a::after {
+                display: none;
+            }
+
+            .theme-toggle {
+                margin-top: 8px;
+            }
+
+            .hero {
+                padding:
+                    120px 5%
+                    70px;
+            }
+
+            .hero h1 {
+                letter-spacing: -2px;
+            }
+
+            section {
+                padding:
+                    75px 5%;
+            }
+
+            .skills-grid,
+            .project-grid,
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .job {
+                padding:
+                    25px 20px 25px 45px;
+            }
+
+            .timeline::before {
+                left: 14px;
+            }
+
+            .job::before {
+                left: 5px;
+            }
+
+            .job-header {
+                flex-direction: column;
+
+                gap: 12px;
+            }
+
+            .date {
+                width: fit-content;
+
+                min-width: 150px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-highlights {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-card {
+                padding: 28px;
+            }
+
+            /* Slightly smaller avatar on mobile */
+
+            .profile-avatar {
+                width: 110px;
+                height: 110px;
+            }
+        }
+
+
+        /* =========================================================
+           VERY SMALL MOBILE
+        ========================================================= */
+
+        @media (max-width: 450px) {
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero h2 {
+                font-size: 17px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .profile-stats {
+                grid-template-columns: 1fr;
+
+                gap: 15px;
+            }
+
+            .profile-avatar {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         SCROLL PROGRESS
+    ========================================================== -->
+
+    <div
+        class="scroll-progress"
+        id="scrollProgress">
+    </div>
+
+
+    <!-- =========================================================
+         NAVIGATION
+    ========================================================== -->
+
+    <nav>
+
+        <a
+            href="#home"
+            class="logo">
+
+            Rimara's Portfolio<span>.</span>
+
+        </a>
+
+
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="Open navigation menu">
+
+            ☰
+
+        </button>
+
+
+        <ul id="navMenu">
+
+            <li>
+                <a href="#about">
+                    About
+                </a>
+            </li>
+
+            <li>
+                <a href="#skills">
+                    Skills
+                </a>
+            </li>
+
+            <li>
+                <a href="#experience">
+                    Experience
+                </a>
+            </li>
+
+            <li>
+                <a href="#education">
+                    Education
+                </a>
+            </li>
+
+            <li>
+                <a href="#projects">
+                    Projects
+                </a>
+            </li>
+
+            <li>
+                <a href="#contact">
+                    Contact
+                </a>
+            </li>
+
+            <li>
+
+                <button
+                    class="theme-toggle"
+                    id="themeToggle"
+                    aria-label="Toggle dark mode">
+
+                    ☀️
+
+                </button>
+
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================================================
+         HERO
+    ========================================================== -->
+
+    <header
+        class="hero"
+        id="home">
+
+        <div class="hero-container">
+
+
+            <div class="hero-content">
+
+                <div class="hero-badge">
+
+                    <span class="status-dot"></span>
+
+                    Sales • Customer Support • Workforce Management
+
+                </div>
+
+
+                <h1>
+
+                    Rimara Magalong
+
+                    <span>
+                        Hermoso
+                    </span>
+
+                </h1>
+
+
+                <h2>
+
+                    Sales & Customer Support Specialist
+                    |
+                    Team Leader
+                    |
+                    Workforce Management
+                    |
+                    Customer Solutions
+                    |
+                    IT Support
+
+                </h2>
+
+
+                <p>
+
+                    Results-driven professional with 10+ years of
+                    experience in team leadership, workforce management,
+                    sales operations, e-commerce, customer service,
+                    and technical support. I specialize in improving
+                    productivity, optimizing operations, supporting
+                    customers, and delivering measurable business results.
+
+                </p>
+
+
+                <div class="buttons">
+
+                    <a
+                        href="https://drive.google.com/file/d/1Cq0oOpCuiQZWG4ei1nqSzFqlAptFzdRd/view?usp=sharing"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn btn-primary">
+
+                        📄 Download Resume
+
+                    </a>
+
+
+                    <a
+                        href="#contact"
+                        class="btn btn-outline">
+
+                        ✉ Contact Me
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================================
+                 PROFILE CARD
+            ====================================================== -->
+
+            <div class="profile-wrapper">
+
+                <div class="profile-card">
+
+
+                    <!-- PROFILE IMAGE -->
+
+                    <div class="profile-avatar">
+
+                        <img
+                            src="rimara.jpg"
+                            alt="Rimara Hermoso"
+                            loading="lazy">
+
+                    </div>
+
+
+                    <h3>
+                        Rimara Hermoso
+                    </h3>
+
+
+                    <p>
+
+                        Sales • Customer Support • Workforce
+                        Management • IT Support
+
+                    </p>
+
+
+                    <div class="profile-stats">
+
+                        <div class="stat">
+
+                            <strong>
+                                10+
+                            </strong>
+
+                            <span>
+                                Years Experience
+                            </span>
+
+                        </div>
+
+
+                        <div class="stat">
+
+                            <strong>
+                                8+
+                            </strong>
+
+                            <span>
+                                Organizations
+                            </span>
+
+                        </div>
+
+
+                        <div class="stat">
+
+                            <strong>
+                                4
+                            </strong>
+
+                            <span>
+                                Core Fields
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================================
+         ABOUT
+    ========================================================== -->
+
+    <section
+        class="about"
+        id="about">
+
+        <div class="section-container">
+
+            <div class="section-title reveal">
+
+                <div class="section-label">
+                    About Me
+                </div>
+
+                <h2>
+                    Professional Summary
+                </h2>
+
+                <p>
+                    A versatile professional focused on people,
+                    performance, technology, and customer success.
+                </p>
+
+            </div>
+
+
+            <div class="about-grid">
+
+
+                <div class="about-intro reveal">
+
+                    <h3>
+                        Hello, I'm Rimara.
+                    </h3>
+
+                    <p>
+
+                        Most people call me Rims. I am a results-driven
+                        Sales, Customer Support, Workforce Management,
+                        and IT Support professional with extensive
+                        experience in performance-driven environments.
+
+                    </p>
+
+                </div>
+
+
+                <div class="about-content reveal">
+
+                    <p>
+
+                        Throughout my career, I have developed strong
+                        expertise in KPI monitoring, workforce scheduling,
+                        performance tracking, customer service, IT support,
+                        troubleshooting, process improvement, sales
+                        operations, and team management.
+
+                    </p>
+
+
+                    <p>
+
+                        I enjoy helping teams perform at their best by
+                        optimizing schedules, monitoring key performance
+                        indicators, resolving technical and customer
+                        concerns, and identifying opportunities to improve
+                        efficiency and productivity.
+
+                    </p>
+
+
+                    <p>
+
+                        I am adaptable, detail-oriented, and comfortable
+                        working in fast-paced environments. I take pride
+                        in being a reliable and solution-oriented
+                        professional who focuses on achieving results,
+                        improving processes, supporting team members,
+                        and delivering positive customer experiences.
+
+                    </p>
+
+
+                    <div class="about-highlights">
+
+
+                        <div class="highlight">
+
+                            <strong>
+                                Leadership
+                            </strong>
+
+                            <span>
+                                Team coaching and performance management
+                            </span>
+
+                        </div>
+
+
+                        <div class="highlight">
+
+                            <strong>
+                                Customer Focus
+                            </strong>
+
+                            <span>
+                                Customer solutions and service excellence
+                            </span>
+
+                        </div>
+
+
+                        <div class="highlight">
+
+                            <strong>
+                                Operations
+                            </strong>
+
+                            <span>
+                                Workforce planning and KPI monitoring
+                            </span>
+
+                        </div>
+
+
+                        <div class="highlight">
+
+                            <strong>
+                                Technology
+                            </strong>
+
+                            <span>
+                                IT troubleshooting and productivity tools
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         SKILLS
+    ========================================================== -->
+
+    <section
+        class="skills"
+        id="skills">
+
+        <div class="section-container">
+
+
+            <div class="section-title reveal">
+
+                <div class="section-label">
+                    Expertise
+                </div>
+
+                <h2>
+                    Skills & Capabilities
+                </h2>
+
+                <p>
+
+                    A combination of leadership, customer experience,
+                    sales, technology, and digital productivity skills.
+
+                </p>
+
+            </div>
+
+
+            <div class="skills-grid">
+
+
+                <div class="skill-card reveal">
+
+                    <div class="skill-icon">
+                        👥
+                    </div>
+
+                    <h3>
+                        Customer Experience Management
+                    </h3>
+
+                    <p>
+                        Customer-focused service, issue resolution,
+                        customer satisfaction, and relationship management.
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card reveal">
+
+                    <div class="skill-icon">
+                        🧑‍💼
+                    </div>
+
+                    <h3>
+                        Team Leadership & Coaching
+                    </h3>
+
+                    <p>
+                        Team support, coaching, performance monitoring,
+                        development, and operational leadership.
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card reveal">
+
+                    <div class="skill-icon">
+                        📊
+                    </div>
+
+                    <h3>
+                        Performance Management
+                    </h3>
+
+                    <p>
+                        KPI monitoring, productivity tracking, reporting,
+                        performance analysis, and improvement.
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card reveal">
+
+                    <div class="skill-icon">
+                        📅
+                    </div>
+
+                    <h3>
+                        Workforce Management
+                    </h3>
+
+                    <p>
+                        Workforce scheduling, staffing records,
+                        attendance monitoring, and workforce reporting.
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card reveal">
+
+                    <div class="skill-icon">
+                        🛒
+                    </div>
+
+                    <h3>
+                        E-Commerce Operations
+                    </h3>
+
+                    <p>
+                        E-commerce support, sales operations, customer
+                        solutions, advertising, and marketing support.
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card reveal">
+
+                    <div class="skill-icon">
+                        📱
+                    </div>
+
+                    <h3>
+                        Social Media Management
+                    </h3>
+
+                    <p>
+                        Social media management, marketing support,
+                        content planning, and digital communication.
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card reveal">
+
+                    <div class="skill-icon">
+                        🎨
+                    </div>
+
+                    <h3>
+                        Canva & Content Creation
+                    </h3>
+
+                    <p>
+                        Visual materials, training content, social media
+                        graphics, and digital content creation.
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card reveal">
+
+                    <div class="skill-icon">
+                        💻
+                    </div>
+
+                    <h3>
+                        IT Support
+                    </h3>
+
+                    <p>
+                        Hardware and software troubleshooting,
+                        installation, maintenance, and user support.
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card reveal">
+
+                    <div class="skill-icon">
+                        🤖
+                    </div>
+
+                    <h3>
+                        AI Productivity Tools
+                    </h3>
+
+                    <p>
+                        ChatGPT and AI productivity tools for research,
+                        content creation, organization, and workflow support.
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card reveal">
+
+                    <div class="skill-icon">
+                        📑
+                    </div>
+
+                    <h3>
+                        Microsoft Office
+                    </h3>
+
+                    <p>
+                        Microsoft Excel, Word, productivity tools,
+                        reporting, and documentation.
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card reveal">
+
+                    <div class="skill-icon">
+                        ☁️
+                    </div>
+
+                    <h3>
+                        Google Workspace
+                    </h3>
+
+                    <p>
+                        Google Workspace tools for reporting,
+                        collaboration, documentation, and productivity.
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card reveal">
+
+                    <div class="skill-icon">
+                        📈
+                    </div>
+
+                    <h3>
+                        Sales & Marketing
+                    </h3>
+
+                    <p>
+                        Sales support, direct selling, cold outreach,
+                        client relationships, and sales strategy.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         WORK EXPERIENCE
+    ========================================================== -->
+
+    <section
+        class="experience"
+        id="experience">
+
+        <div class="section-container">
+
+
+            <div class="section-title reveal">
+
+                <div class="section-label">
+                    Career
+                </div>
+
+                <h2>
+                    Work Experience
+                </h2>
+
+                <p>
+
+                    My professional journey across sales, customer
+                    service, workforce management, and IT support.
+
+                </p>
+
+            </div>
+
+
+            <div class="timeline">
+
+
+                <article class="job reveal">
+
+                    <div class="job-header">
+
+                        <div>
+
+                            <h3>
+                                Workforce Analyst –
+                                E-Commerce Advertising & Marketing
+                            </h3>
+
+                            <h4>
+                                Firmoo — Remote
+                            </h4>
+
+                        </div>
+
+
+                        <div class="date">
+
+                            Mar 2023 – Aug 2026
+
+                            <span class="duration">
+                                3 Years 5 Months
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <ul>
+
+                        <li>
+                            Managed workforce data and staffing records.
+                        </li>
+
+                        <li>
+                            Prepared reports and dashboards using
+                            Microsoft Office and Google Workspace.
+                        </li>
+
+                        <li>
+                            Monitored attendance, productivity,
+                            and staffing trends.
+                        </li>
+
+                        <li>
+                            Supported workforce scheduling and planning.
+                        </li>
+
+                    </ul>
+
+
+                    <div class="achievement-title">
+                        Customer Service Solutions Support
+                    </div>
+
+
+                    <ul>
+
+                        <li>
+                            Promoted after one year.
+                        </li>
+
+                        <li>
+                            Provided professional customer support for
+                            eyeglasses, including product inquiries,
+                            orders, prescriptions, lenses, frames,
+                            shipping, returns, and refunds.
+                        </li>
+
+                    </ul>
+
+                </article>
+
+
+                <article class="job reveal">
+
+                    <div class="job-header">
+
+                        <div>
+
+                            <h3>
+                                Customer Solutions & Technical
+                                Support Specialist – Tier 3
+                            </h3>
+
+                            <h4>
+                                Inspiro Relia Inc. — Remote
+                            </h4>
+
+                        </div>
+
+
+                        <div class="date">
+
+                            Nov 2022 – Feb 2023
+
+                            <span class="duration">
+                                4 Months
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="account">
+
+                        <strong>
+                            Account:
+                        </strong>
+
+                        Seasonal Account / Client:
+                        1800FLOWERS.COM
+
+                    </div>
+
+
+                    <ul>
+
+                        <li>
+                            Resolved product and service issues via
+                            email, live chat, and phone.
+                        </li>
+
+                        <li>
+                            Handled Tier 3 escalations and
+                            compensation requests.
+                        </li>
+
+                        <li>
+                            Identified root causes and provided
+                            effective customer solutions.
+                        </li>
+
+                        <li>
+                            Followed up on cases to ensure resolution
+                            and customer satisfaction.
+                        </li>
+
+                    </ul>
+
+                </article>
+
+
+                <article class="job reveal">
+
+                    <div class="job-header">
+
+                        <div>
+
+                            <h3>
+                                Sales Support Team Manager /
+                                Team Leader
+                            </h3>
+
+                            <h4>
+                                Uptimised Corporation
+                            </h4>
+
+                        </div>
+
+
+                        <div class="date">
+
+                            Nov 2021 – Oct 2022
+
+                            <span class="duration">
+                                1 Year
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="account">
+                        E-Commerce Advertising and Marketing
+                    </div>
+
+
+                    <ul>
+
+                        <li>
+                            Proposed sales and marketing strategies
+                            to management.
+                        </li>
+
+                        <li>
+                            Coordinated sales team schedules and
+                            staff operations.
+                        </li>
+
+                        <li>
+                            Prepared daily sales reports using
+                            Google tools and Microsoft Excel.
+                        </li>
+
+                        <li>
+                            Created visual materials for training
+                            and performance tracking.
+                        </li>
+
+                    </ul>
+
+
+                    <div class="achievement-title">
+                        Key Achievements
+                    </div>
+
+
+                    <ul>
+
+                        <li>
+                            Supported sales and marketing strategies
+                            for business growth.
+                        </li>
+
+                        <li>
+                            Coordinated sales schedules and staff
+                            operations.
+                        </li>
+
+                        <li>
+                            Streamlined sales reporting using Google
+                            tools and Excel.
+                        </li>
+
+                        <li>
+                            Improved training and performance tracking.
+                        </li>
+
+                    </ul>
+
+                </article>
+
+
+                <article class="job reveal">
+
+                    <div class="job-header">
+
+                        <div>
+
+                            <h3>
+                                Sales Service Specialist /
+                                Customer Service Consultant
+                            </h3>
+
+                            <h4>
+                                Buwelo — An Exacstar Company
+                            </h4>
+
+                        </div>
+
+
+                        <div class="date">
+
+                            Dec 2019 – Feb 2021
+
+                            <span class="duration">
+                                1 Year 3 Months
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="account">
+
+                        <strong>
+                            Account:
+                        </strong>
+
+                        Pioneer of Stericycle pilot account,
+                        later became a regular Buwelo client.
+
+                    </div>
+
+
+                    <ul>
+
+                        <li>
+                            Conducted cold calls and email outreach
+                            to prospective clients.
+                        </li>
+
+                        <li>
+                            Secured waste management service contracts
+                            with healthcare facilities.
+                        </li>
+
+                        <li>
+                            Built client relationships and identified
+                            customer needs.
+                        </li>
+
+                        <li>
+                            Provided tailored solutions and consistently
+                            met or exceeded sales targets.
+                        </li>
+
+                    </ul>
+
+
+                    <div class="achievement-title">
+                        Key Achievement
+                    </div>
+
+
+                    <ul>
+
+                        <li>
+                            Rapid Closer Award – First-Week Pilot
+                            Program Success.
+                        </li>
+
+                    </ul>
+
+                </article>
+
+
+                <article class="job reveal">
+
+                    <div class="job-header">
+
+                        <div>
+
+                            <h3>
+                                Customer Experience &
+                                Solutions Specialist
+                            </h3>
+
+                            <h4>
+                                Alorica Inc.
+                            </h4>
+
+                        </div>
+
+
+                        <div class="date">
+
+                            Jun 2019 – Dec 2019
+
+                            <span class="duration">
+                                7 Months
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="account">
+
+                        <strong>
+                            Account:
+                        </strong>
+
+                        Amazon.com, Inc. —
+                        Part-Time Quality Assurance
+
+                    </div>
+
+
+                    <ul>
+
+                        <li>
+                            Resolved customer inquiries and provided
+                            tailored solutions.
+                        </li>
+
+                        <li>
+                            Maintained accurate customer records
+                            and case documentation.
+                        </li>
+
+                        <li>
+                            Consistently met performance and
+                            quality targets.
+                        </li>
+
+                        <li>
+                            Enhanced customer satisfaction through
+                            effective support.
+                        </li>
+
+                    </ul>
+
+
+                    <div class="achievement-title">
+                        Key Achievements
+                    </div>
+
+
+                    <ul>
+
+                        <li>
+                            Completed training for a part-time
+                            Quality Assurance Reviewer role.
+                        </li>
+
+                        <li>
+                            Reviewed customer interactions for
+                            quality and compliance.
+                        </li>
+
+                        <li>
+                            Identified service trends and process
+                            improvement opportunities.
+                        </li>
+
+                        <li>
+                            Supported operational efficiency and
+                            quality standards.
+                        </li>
+
+                    </ul>
+
+                </article>
+
+
+                <article class="job reveal">
+
+                    <div class="job-header">
+
+                        <div>
+
+                            <h3>
+                                Sales Consultant
+                            </h3>
+
+                            <h4>
+                                Rustan Commercial Corporation
+                            </h4>
+
+                        </div>
+
+
+                        <div class="date">
+
+                            Feb 2019 – May 2019
+
+                            <span class="duration">
+                                4 Months
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="account">
+                        Field: Direct Selling
+                    </div>
+
+
+                    <ul>
+
+                        <li>
+                            Consistently met sales quotas for
+                            three consecutive months.
+                        </li>
+
+                        <li>
+                            Built strong client relationships and
+                            provided tailored solutions.
+                        </li>
+
+                        <li>
+                            Conducted effective sales presentations
+                            and follow-ups.
+                        </li>
+
+                        <li>
+                            Maintained accurate sales records to
+                            support business growth.
+                        </li>
+
+                    </ul>
+
+
+                    <div class="achievement-title">
+                        Key Achievements
+                    </div>
+
+
+                    <ul>
+
+                        <li>
+                            Top-Performing Salesperson –
+                            3 Consecutive Months.
+                        </li>
+
+                        <li>
+                            Consistent Sales Achiever –
+                            3 Consecutive Months.
+                        </li>
+
+                    </ul>
+
+                </article>
+
+
+                <article class="job reveal">
+
+                    <div class="job-header">
+
+                        <div>
+
+                            <h3>
+                                Sales Support Officer /
+                                Officer-in-Charge
+                            </h3>
+
+                            <h4>
+                                Blue Mountain
+                            </h4>
+
+                        </div>
+
+
+                        <div class="date">
+
+                            Dec 2015 – Jan 2019
+
+                            <span class="duration">
+                                3 Years 2 Months
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <ul>
+
+                        <li>
+                            Served as Sales Support Officer and
+                            Officer-in-Charge for premium liquor brands,
+                            overseeing daily sales and operational activities.
+                        </li>
+
+                        <li>
+                            Managed and maintained strong relationships
+                            with high-value clients, ensuring excellent
+                            customer service and repeat business.
+                        </li>
+
+                    </ul>
+
+
+                    <div class="achievement-title">
+                        Key Achievements
+                    </div>
+
+
+                    <ul>
+
+                        <li>
+                            Consistently achieved 100%+ of Sales Quota
+                            throughout 3 years and 2 months of employment.
+                        </li>
+
+                        <li>
+                            Outstanding Sales & Customer Service
+                            Achievement Award.
+                        </li>
+
+                    </ul>
+
+                </article>
+
+
+                <article class="job reveal">
+
+                    <div class="job-header">
+
+                        <div>
+
+                            <h3>
+                                Computer Technical Specialist –
+                                Hardware & Software
+                            </h3>
+
+                            <h4>
+                                Saleh Abdulla Ali Jarssi Est. — Bahrain
+                            </h4>
+
+                        </div>
+
+
+                        <div class="date">
+
+                            Nov 2014 – Sep 2015
+
+                            <span class="duration">
+                                11 Months
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <ul>
+
+                        <li>
+                            Troubleshot and resolved hardware
+                            and software issues.
+                        </li>
+
+                        <li>
+                            Installed and maintained systems
+                            and applications.
+                        </li>
+
+                        <li>
+                            Optimized IT performance and reduced
+                            system downtime.
+                        </li>
+
+                        <li>
+                            Trained staff on efficient technology use.
+                        </li>
+
+                    </ul>
+
+
+                    <div class="achievement-title">
+                        Key Achievements
+                    </div>
+
+
+                    <ul>
+
+                        <li>
+                            Trained staff on hardware and
+                            software usage.
+                        </li>
+
+                        <li>
+                            Developed user guides and SOPs to
+                            improve IT self-sufficiency.
+                        </li>
+
+                    </ul>
+
+                </article>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         EDUCATION
+    ========================================================== -->
+
+    <section
+        class="education"
+        id="education">
+
+        <div class="section-container">
+
+
+            <div class="section-title reveal">
+
+                <div class="section-label">
+                    Education
+                </div>
+
+                <h2>
+                    Academic Background
+                </h2>
+
+            </div>
+
+
+            <div class="education-grid">
+
+
+                <div class="education-card reveal">
+
+                    <div class="education-icon">
+                        🎓
+                    </div>
+
+                    <h3>
+                        Bachelor of Science in Computer Science
+                    </h3>
+
+                    <h4>
+                        Major in Computer Science
+                    </h4>
+
+                    <p>
+                        AMA Computer College
+                    </p>
+
+                    <p>
+                        2019 – 2023
+                    </p>
+
+                </div>
+
+
+                <div class="education-card reveal">
+
+                    <div class="education-icon">
+                        📚
+                    </div>
+
+                    <h3>
+                        On-the-Job Training in Import &
+                        Export Operations
+                    </h3>
+
+                    <h4>
+                        E-Konek Pilipinas
+                    </h4>
+
+                    <p>
+                        Provided administrative and clerical support,
+                        managed documentation and correspondence,
+                        and maintained organized physical and digital
+                        filing systems.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         PROJECTS
+    ========================================================== -->
+
+    <section
+        class="projects"
+        id="projects">
+
+        <div class="section-container">
+
+
+            <div class="section-title reveal">
+
+                <div class="section-label">
+                    Portfolio
+                </div>
+
+                <h2>
+                    Projects & Work
+                </h2>
+
+                <p>
+                    Add your professional projects, websites,
+                    dashboards, marketing work, or other achievements here.
+                </p>
+
+            </div>
+
+
+            <div class="project-grid">
+
+
+                <div class="project reveal">
+
+                    <div class="project-number">
+                        PROJECT 01
+                    </div>
+
+                    <h3>
+                        Workforce Reporting Dashboard
+                    </h3>
+
+                    <p>
+                        A professional workforce reporting project
+                        focused on staffing data, attendance,
+                        productivity, scheduling, and performance
+                        monitoring.
+                    </p>
+
+                    <a
+                        href="#"
+                        class="project-link"
+                        onclick="showProjectMessage(event)">
+
+                        View Project →
+
+                    </a>
+
+                </div>
+
+
+                <div class="project reveal">
+
+                    <div class="project-number">
+                        PROJECT 02
+                    </div>
+
+                    <h3>
+                        E-Commerce Support Operations
+                    </h3>
+
+                    <p>
+                        Customer service and e-commerce support
+                        experience involving product inquiries,
+                        orders, prescriptions, shipping, returns,
+                        refunds, and customer solutions.
+                    </p>
+
+                    <a
+                        href="#"
+                        class="project-link"
+                        onclick="showProjectMessage(event)">
+
+                        View Project →
+
+                    </a>
+
+                </div>
+
+
+                <div class="project reveal">
+
+                    <div class="project-number">
+                        PROJECT 03
+                    </div>
+
+                    <h3>
+                        Digital Content & Marketing
+                    </h3>
+
+                    <p>
+                        Social media, Canva, marketing materials,
+                        training visuals, and digital content designed
+                        to support sales and business communication.
+                    </p>
+
+                    <a
+                        href="#"
+                        class="project-link"
+                        onclick="showProjectMessage(event)">
+
+                        View Project →
+
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         CONTACT
+    ========================================================== -->
+
+    <section
+        class="contact"
+        id="contact">
+
+        <div class="section-container">
+
+
+            <div class="section-title reveal">
+
+                <div class="section-label">
+                    Contact
+                </div>
+
+                <h2>
+                    Let's Work Together
+                </h2>
+
+                <p class="contact-intro">
+
+                    Whether you're looking for a reliable customer
+                    support professional, workforce specialist,
+                    sales professional, team leader, or IT support
+                    specialist, I'd be happy to connect.
+
+                </p>
+
+            </div>
+
+
+            <div class="contact-grid">
+
+
+                <div class="contact-card reveal">
+
+                    <div class="contact-icon">
+                        ✉️
+                    </div>
+
+                    <span>
+                        Email
+                    </span>
+
+                    <a href="mailto:hermosorimara0819@gmail.com">
+                        hermosorimara0819@gmail.com
+                    </a>
+
+                </div>
+
+
+                <div class="contact-card reveal">
+
+                    <div class="contact-icon">
+                        📞
+                    </div>
+
+                    <span>
+                        Phone
+                    </span>
+
+                    <a href="tel:+639637823420">
+                        +63 963 782 3420
+                    </a>
+
+                </div>
+
+
+                <div class="contact-card reveal">
+
+                    <div class="contact-icon">
+                        📍
+                    </div>
+
+                    <span>
+                        Location
+                    </span>
+
+                    <a href="#contact">
+                        Olongapo City, Zambales
+                    </a>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- SOCIAL LINKS -->
+
+            <div class="social-links reveal">
+
+
+                <a
+                    class="social-link"
+                    href="https://www.linkedin.com/in/rimara-hermoso-72864b2b0/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn">
+
+                    in
+
+                </a>
+
+
+                <a
+                    class="social-link"
+                    href="mailto:hermosorimara0819@gmail.com"
+                    aria-label="Email">
+
+                    ✉
+
+                </a>
+
+
+                <a
+                    class="social-link"
+                    href="tel:+639637823420"
+                    aria-label="Phone">
+
+                    ☎
+
+                </a>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+
+    <footer>
+
+        <p>
+
+            ©
+            <span id="year"></span>
+
+            Rimara Hermoso Portfolio.
+
+            All Rights Reserved.
+
+        </p>
+
+    </footer>
+
+
+    <!-- =========================================================
+         BACK TO TOP
+    ========================================================== -->
+
+    <button
+        class="back-top"
+        id="backTop"
+        aria-label="Back to top">
+
+        ↑
+
+    </button>
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================== -->
+
+    <script>
+
+        /* =====================================================
+           MOBILE NAVIGATION
+        ===================================================== */
+
+        const menuToggle =
+            document.getElementById("menuToggle");
+
+        const navMenu =
+            document.getElementById("navMenu");
+
+
+        menuToggle.addEventListener(
+            "click",
+            () => {
+
+                navMenu.classList.toggle("active");
+
+                if (
+                    navMenu.classList.contains("active")
+                ) {
+
+                    menuToggle.textContent = "✕";
+
+                } else {
+
+                    menuToggle.textContent = "☰";
+
+                }
+
+            }
+        );
+
+
+        /* Close mobile menu */
+
+        document
+            .querySelectorAll("#navMenu a")
+            .forEach(link => {
+
+                link.addEventListener(
+                    "click",
+                    () => {
+
+                        navMenu.classList.remove(
+                            "active"
+                        );
+
+                        menuToggle.textContent = "☰";
+
+                    }
+                );
+
+            });
+
+
+        /* =====================================================
+           DARK / LIGHT MODE
+        ===================================================== */
+
+        const themeToggle =
+            document.getElementById("themeToggle");
+
+
+        const savedTheme =
+            localStorage.getItem(
+                "portfolioTheme"
+            );
+
+
+        if (savedTheme === "dark") {
+
+            document.body.classList.add("dark");
+
+            themeToggle.textContent = "🌙";
+
+        }
+
+
+        themeToggle.addEventListener(
+            "click",
+            () => {
+
+                document.body.classList.toggle(
+                    "dark"
+                );
+
+
+                const isDark =
+                    document.body.classList.contains(
+                        "dark"
+                    );
+
+
+                themeToggle.textContent =
+                    isDark
+                        ? "🌙"
+                        : "☀️";
+
+
+                localStorage.setItem(
+                    "portfolioTheme",
+                    isDark
+                        ? "dark"
+                        : "light"
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           SCROLL PROGRESS
+        ===================================================== */
+
+        window.addEventListener(
+            "scroll",
+            () => {
+
+                const scrollTop =
+                    window.scrollY;
+
+
+                const documentHeight =
+                    document.documentElement.scrollHeight -
+                    document.documentElement.clientHeight;
+
+
+                const scrollPercentage =
+                    (scrollTop / documentHeight) * 100;
+
+
+                document.getElementById(
+                    "scrollProgress"
+                ).style.width =
+                    scrollPercentage + "%";
+
+            }
+        );
+
+
+        /* =====================================================
+           BACK TO TOP
+        ===================================================== */
+
+        const backTop =
+            document.getElementById("backTop");
+
+
+        window.addEventListener(
+            "scroll",
+            () => {
+
+                if (window.scrollY > 500) {
+
+                    backTop.classList.add(
+                        "show"
+                    );
+
+                } else {
+
+                    backTop.classList.remove(
+                        "show"
+                    );
+
+                }
+
+            }
+        );
+
+
+        backTop.addEventListener(
+            "click",
+            () => {
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+
+            }
+        );
+
+
+        /* =====================================================
+           REVEAL ANIMATIONS
+        ===================================================== */
+
+        const revealElements =
+            document.querySelectorAll(
+                ".reveal"
+            );
+
+
+        const revealObserver =
+            new IntersectionObserver(
+                (entries, observer) => {
+
+                    entries.forEach(entry => {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            entry.target.classList.add(
+                                "active"
+                            );
+
+
+                            observer.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.12
+                }
+            );
+
+
+        revealElements.forEach(
+            element => {
+
+                revealObserver.observe(
+                    element
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           CURRENT YEAR
+        ===================================================== */
+
+        document.getElementById(
+            "year"
+        ).textContent =
+            new Date().getFullYear();
+
+
+        /* =====================================================
+           PROJECT PLACEHOLDER MESSAGE
+        ===================================================== */
+
+        function showProjectMessage(event) {
+
+            event.preventDefault();
+
+            alert(
+                "This project link is currently a placeholder. " +
+                "Replace the # in the project link with your actual project URL."
+            );
+
+        }
+
+    </script>
+
+</body>
+
+</html>
+```
