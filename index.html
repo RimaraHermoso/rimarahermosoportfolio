@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -2718,6 +2717,150 @@ body * {
     opacity: 1;
 }
 
+
+
+        /* =========================================================
+           PASSWORD PROTECTION MODAL
+        ========================================================== */
+
+        .password-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(2, 6, 23, 0.75);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 999999;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s ease;
+        }
+
+        .password-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .password-box {
+            width: 100%;
+            max-width: 400px;
+            padding: 32px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.35);
+            text-align: center;
+            transform: translateY(20px) scale(0.95);
+            transition: 0.3s ease;
+        }
+
+        .password-modal.active .password-box {
+            transform: translateY(0) scale(1);
+        }
+
+        .password-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(37, 99, 235, 0.1);
+            font-size: 28px;
+        }
+
+        .password-box h3 {
+            color: var(--text);
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .password-box p {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 22px;
+        }
+
+        .password-input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 13px 15px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: var(--light);
+            color: var(--text);
+            font-family: inherit;
+            font-size: 14px;
+            outline: none;
+            transition: 0.3s ease;
+        }
+
+        .password-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+        }
+
+        .password-error {
+            min-height: 20px;
+            margin-top: 8px;
+            color: #ef4444;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .password-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .password-submit,
+        .password-cancel {
+            flex: 1;
+            border: none;
+            border-radius: 10px;
+            padding: 12px;
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .password-submit {
+            background: var(--primary);
+            color: white;
+        }
+
+        .password-submit:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .password-cancel {
+            background: var(--light);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .password-cancel:hover {
+            background: var(--border);
+        }
+
+        @media (max-width: 450px) {
+            .password-box {
+                padding: 25px 20px;
+            }
+
+            .password-actions {
+                flex-direction: column;
+            }
+        }
+
 </style>
 
 </head>
@@ -2777,7 +2920,7 @@ body * {
 
             <li>
                 <a href="#experience">
-                    Work Experience
+                    My Work Experience
                 </a>
             </li>
 
@@ -2789,7 +2932,7 @@ body * {
 
             <li>
                 <a href="#projects">
-                    Achievements
+                    Achievements & Certificates
                 </a>
             </li>
 
@@ -2880,7 +3023,7 @@ body * {
                 <div class="buttons">
 
                     <a
-                        href="https://drive.google.com/file/d/1Cq0oOpCuiQZWG4ei1nqSzFqlAptFzdRd/view?usp=sharing"
+                        href="https://drive.google.com/file/d/1bPFJbWwZGqSR2oGl_6kYTrsp8RMra4bG/view?usp=sharing"
                         target="_blank"
                         rel="noopener noreferrer"
                         class="btn btn-primary"
@@ -3590,10 +3733,10 @@ body * {
 
                         <div class="date">
 
-                            Nov 2021 – Oct 2022
+                            June 2021 – Nov 2022
 
                             <span class="duration">
-                                1 Year
+                                1 year and 4 months
                             </span>
 
                         </div>
@@ -4123,8 +4266,17 @@ body * {
                     </p>
 
                     <p>
-                        2019 – 2023
+                        2012 – 2014
                     </p>
+					       <a
+    href="https://drive.google.com/file/d/1GhFk99sopXuKJFFZNcz0K-1LPFOVTcW-/view?usp=sharing"
+    class="project-link protected-credential"
+    data-password="MyCredentials"
+    target="_blank"
+    rel="noopener noreferrer">
+
+    View My Diploma →
+</a>
 
                 </div>
 
@@ -4132,25 +4284,26 @@ body * {
                 <div class="education-card reveal">
 
                     <div class="education-icon">
-                        📚
+                        🎓
                     </div>
 
                     <h3>
-                        On-the-Job Training in Import &
-                        Export Operations
+                        Associate Graduate of Computer System and Design Programming
                     </h3>
 
                     <h4>
-                        E-Konek Pilipinas
+                        Web design / HTML / C++ Programming
                     </h4>
 
                     <p>
-                        Provided administrative and clerical support,
-                        managed documentation and correspondence,
-                        and maintained organized physical and digital
-                        filing systems.
+                        AMA Computer Learning Center
+                    </p>
+<p>
+                        2010-2012
                     </p>
 
+					
+					
                 </div>
 
 
@@ -4178,13 +4331,13 @@ body * {
                 </div>
 
                 <h2>
-                    Projects & Work
+                    My Achievements & Certificates
                 </h2>
 
                 <p>
-                    Add your professional projects, websites,
-                    dashboards, marketing work, or other achievements here.
-                </p>
+Here are my achievements and certificates that reflect over 10 years of experience in leadership, operations, customer service, sales, e-commerce, workforce management, and technical support. Each one represents skills gained, challenges overcome, and continuous growth throughout my career.
+
+From leading teams and improving performance to solving customer and technical concerns, I’ve always focused on one thing: work smarter, solve problems, and get results.                </p>
 
             </div>
 
@@ -4195,28 +4348,26 @@ body * {
                 <div class="project reveal">
 
                     <div class="project-number">
-                        PROJECT 01
+                        E-Konek Pilipinas
                     </div>
 
                     <h3>
-                        Workforce Reporting Dashboard
+                      E-Konek Pilipinas | Office Clerk & Data Encoder
                     </h3>
 
                     <p>
-                        A professional workforce reporting project
-                        focused on staffing data, attendance,
-                        productivity, scheduling, and performance
-                        monitoring.
+                        Successfully completed 240 hours of On-the-Job Training (OJT) at E-Konek Pilipinas, Subic Bay Freeport Zone, from November 22, 2012 to March 7, 2013, serving as an Office Clerk and Data Encoder. The training provided practical experience in office administration, data encoding, and computer-related tasks as part of the Computer System Design and Programming program.
                     </p>
 
-                    <a
-                        href="#"
-                        class="project-link"
-                        onclick="showProjectMessage(event)">
+                   <a
+    href="https://drive.google.com/file/d/1xMYzXHETyJrSPb7b9HLug2ui3DEjVRH7/view?usp=sharing"
+    class="project-link protected-credential"
+    data-password="MyCredentials"
+    target="_blank"
+    rel="noopener noreferrer">
 
-                        View Project →
-
-                    </a>
+    View My Obtained Certificate →
+</a>
 
                 </div>
 
@@ -4224,28 +4375,28 @@ body * {
                 <div class="project reveal">
 
                     <div class="project-number">
-                        PROJECT 02
+                        Uptimised Corporation
                     </div>
 
                     <h3>
-                        E-Commerce Support Operations
+                       E-Commerce Operations Training
                     </h3>
 
                     <p>
-                        Customer service and e-commerce support
-                        experience involving product inquiries,
-                        orders, prescriptions, shipping, returns,
-                        refunds, and customer solutions.
+                        Successfully completed the required coursework and field training in <b> E-Commerce Operations</b>, with a focus on Marketing and Social Media Management, at Uptimised Corporation. The training provided practical knowledge and skills necessary to support e-commerce operations, digital marketing activities, and social media management, contributing to the requirements for employment with the company.
                     </p>
 
-                    <a
-                        href="#"
-                        class="project-link"
-                        onclick="showProjectMessage(event)">
+                   <a
+    href="https://drive.google.com/file/d/14zCnQD7ouhdRckXc1Z2qLKpy4ZvulyRh/view?usp=sharing"
+    class="project-link protected-credential"
+    data-password="MyCredentials"
+    class="project-link protected-credential"
+    data-password="MyCredentials"
+    target="_blank"
+    rel="noopener noreferrer">
 
-                        View Project →
-
-                    </a>
+    View My Obtained Certificate →
+</a>
 
                 </div>
 
@@ -4253,29 +4404,107 @@ body * {
                 <div class="project reveal">
 
                     <div class="project-number">
-                        PROJECT 03
+                        Uptimised Corporation as Team Leader
                     </div>
 
                     <h3>
-                        Digital Content & Marketing
+                        Certificate of Employment
                     </h3>
 
                     <p>
-                        Social media, Canva, marketing materials,
-                        training visuals, and digital content designed
-                        to support sales and business communication.
+                       Promoted to Team Leader at Uptimised Corporation, serving in the role from December 1, 2021, to November 28, 2022. The promotion reflected increased responsibility in leading and supporting team operations, coordinating team activities, and contributing to the organization’s overall performance and goals. <b>The role also involved proficiency in Google Workspace and Microsoft Office tools, as well as creating content using Canva for social media marketing and managing advertising campaigns through Meta Business Suite </b>, supporting effective team communication, content creation, and digital engagement.
                     </p>
 
-                    <a
-                        href="#"
-                        class="project-link"
-                        onclick="showProjectMessage(event)">
+                   <a
+    href="https://drive.google.com/file/d/1lEvJVZRwr0jWIOjnx_IkRJqqoM06wYAA/view?usp=sharing"
+    class="project-link protected-credential"
+    data-password="MyCredentials"
+    target="_blank"
+    rel="noopener noreferrer">
 
-                        View Project →
-
-                    </a>
+    View My Obtained Certificate →
+</a>
 
                 </div>
+				
+				<div class="project reveal">
+
+                    <div class="project-number">
+                        Alorica Inc.
+                    </div>
+
+                    <h3>
+                       Quality Assurance Certificate 
+                    </h3>
+
+                    <p>
+                        Certified for the Quality Assurance Reviewer role supporting the Amazon account at Alorica, with demonstrated proficiency in quality evaluation processes, adherence to operational compliance, and a strong commitment to maintaining and elevating customer experience standards. Awarded September 13, 2019.
+                    </p>
+
+                   <a
+    href="https://drive.google.com/file/d/1TW-e_qtT13k7EqjvM7-Q-VBr0OvRjP28/view?usp=sharing"
+    class="project-link protected-credential"
+    data-password="MyCredentials"
+    target="_blank"
+    rel="noopener noreferrer">
+
+    View My Obtained Certificate →
+</a>
+
+                </div>
+				
+				<div class="project reveal">
+
+                    <div class="project-number">
+                        Alorica Inc.
+                    </div>
+
+                    <h3>
+                        5-STAR CUSTOMER DELIGHT CHAMPION AWARD 
+                    </h3>
+
+                    <p>
+                        Recognized as a 5-Star Customer Delight Champion for consistently delivering exceptional customer experiences, demonstrating outstanding service excellence, and going above and beyond to meet customer needs. This award reflects a strong commitment to customer satisfaction, quality service, and creating positive experiences that earn 5-star customer feedback and recognition.
+                    </p>
+
+                   <a
+    href="https://drive.google.com/file/d/1Vx_VKr6L1SdoOzskUDDi9rfVK3IH8HAw/view?usp=sharing"
+    class="project-link protected-credential"
+    data-password="MyCredentials"
+    target="_blank"
+    rel="noopener noreferrer">
+
+    View My Obtained Certificate →
+</a>
+
+                </div>
+				
+				<div class="project reveal">
+
+                    <div class="project-number">
+                        Buwelo an Exactstar Company
+                    </div>
+
+                    <h3>
+                       Rapid Closer Award in Sales
+                    </h3>
+
+                    <p>
+                       Contributed to the successful launch and foundational development of the Stericycle account as one of its pioneers, demonstrating exceptional dedication, efficiency, and rapid execution in handling cold calls and initial customer engagements. Played a key role in establishing effective processes and achieving benchmark results during the First-Week Pilot Program, helping set the standard for the account’s early success.
+                    </p>
+
+                   <a
+    href="https://drive.google.com/file/d/1ZCPeojkwtAwx-qmu8P8HcLJLLIBm4Yz-/view?usp=sharing"
+    class="project-link protected-credential"
+    data-password="MyCredentials"
+    target="_blank"
+    rel="noopener noreferrer">
+
+    View My Obtained Certificate →
+</a>
+
+                </div>
+				
 
 
             </div>
@@ -4462,7 +4691,63 @@ body * {
          JAVASCRIPT
     ========================================================== -->
 
-    <script>
+    
+
+    <!-- =========================================================
+         PASSWORD PROTECTION MODAL
+    ========================================================== -->
+
+    <div class="password-modal" id="passwordModal">
+
+        <div class="password-box">
+
+            <div class="password-icon">
+                🔐
+            </div>
+
+            <h3>
+                Protected Document
+            </h3>
+
+            <p>
+                Enter the password to view this document.
+            </p>
+
+            <input
+                type="password"
+                id="credentialPassword"
+                class="password-input"
+                placeholder="Enter password"
+                autocomplete="off">
+
+            <div
+                class="password-error"
+                id="passwordError">
+            </div>
+
+            <div class="password-actions">
+
+                <button
+                    type="button"
+                    class="password-cancel"
+                    id="passwordCancel">
+                    Cancel
+                </button>
+
+                <button
+                    type="button"
+                    class="password-submit"
+                    id="passwordSubmit">
+                    Continue →
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+<script>
 
 
         /* =====================================================
@@ -5268,12 +5553,188 @@ body * {
 
         }
 
-    </script>
+    
+
+
+        /* =====================================================
+           PASSWORD PROTECTION FOR DIPLOMA & CERTIFICATE
+        ===================================================== */
+
+        const passwordModal =
+            document.getElementById("passwordModal");
+
+        const credentialPassword =
+            document.getElementById("credentialPassword");
+
+        const passwordError =
+            document.getElementById("passwordError");
+
+        const passwordSubmit =
+            document.getElementById("passwordSubmit");
+
+        const passwordCancel =
+            document.getElementById("passwordCancel");
+
+        let protectedLink = null;
+        let passwordAttempts = 0;
+
+
+        /* Open password popup */
+
+        document
+            .querySelectorAll(".protected-credential")
+            .forEach(link => {
+
+                link.addEventListener(
+                    "click",
+                    event => {
+
+                        event.preventDefault();
+
+                        protectedLink = link;
+                        passwordAttempts = 0;
+
+                        credentialPassword.value = "";
+                        passwordError.textContent = "";
+
+                        passwordModal.classList.add("active");
+
+                        setTimeout(() => {
+                            credentialPassword.focus();
+                        }, 200);
+
+                    }
+                );
+
+            });
+
+
+        /* Check password */
+
+        function checkCredentialPassword() {
+
+            if (!protectedLink) {
+                return;
+            }
+
+            const enteredPassword =
+                credentialPassword.value;
+
+            const correctPassword =
+                protectedLink.dataset.password;
+
+            if (enteredPassword === correctPassword) {
+
+                passwordError.textContent = "";
+
+                passwordModal.classList.remove("active");
+
+                const destination =
+                    protectedLink.getAttribute("href");
+
+                if (destination) {
+
+                    window.open(
+                        destination,
+                        "_blank",
+                        "noopener,noreferrer"
+                    );
+
+                }
+
+                protectedLink = null;
+
+            } else {
+
+                passwordAttempts++;
+
+                if (passwordAttempts >= 2) {
+
+                    passwordError.innerHTML =
+                        "Incorrect password again.<br><br>" +
+                        "Please contact me at " +
+                        "<a href=\"mailto:hermosorimara0819@gmail.com\" " +
+                        "style=\"color: var(--primary); font-weight: 700; text-decoration: underline;\">" +
+                        "hermosorimara0819@gmail.com</a> " +
+                        "for the password.";
+
+                } else {
+
+                    passwordError.textContent =
+                        "Incorrect password. Please try again.";
+
+                }
+
+                credentialPassword.value = "";
+                credentialPassword.focus();
+
+            }
+
+        }
+
+
+        /* Continue button */
+
+        passwordSubmit.addEventListener(
+            "click",
+            checkCredentialPassword
+        );
+
+
+        /* Enter key */
+
+        credentialPassword.addEventListener(
+            "keydown",
+            event => {
+
+                if (event.key === "Enter") {
+                    checkCredentialPassword();
+                }
+
+            }
+        );
+
+
+        /* Cancel button */
+
+        passwordCancel.addEventListener(
+            "click",
+            () => {
+
+                passwordModal.classList.remove("active");
+
+                credentialPassword.value = "";
+                passwordError.textContent = "";
+                passwordAttempts = 0;
+                protectedLink = null;
+
+            }
+        );
+
+
+        /* Close when clicking outside the popup */
+
+        passwordModal.addEventListener(
+            "click",
+            event => {
+
+                if (event.target === passwordModal) {
+
+                    passwordModal.classList.remove("active");
+
+                    credentialPassword.value = "";
+                    passwordError.textContent = "";
+                    passwordAttempts = 0;
+                    protectedLink = null;
+
+                }
+
+            }
+        );
+
+</script>
 
 
 </body>
 
 </html>
-
-
-||  I want to make the emoji reaction when the the contact me press into burst not aligned like reactions then when the day mode and night mode has been press there an effect transition for the whole page whethere it is in Day mode or night mode
